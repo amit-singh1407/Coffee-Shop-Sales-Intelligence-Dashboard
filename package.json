@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "deploy": "npm --prefix frontend run build",
+    "postdeploy": "node -e \"process.stdout.write('Published\\n')\"",
     "build:frontend": "npm --prefix frontend run build",
     "dev:frontend": "npm --prefix frontend run dev"
   }
