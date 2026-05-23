@@ -20,6 +20,7 @@ This project combines a Flask backend and a React/Vite frontend for coffee shop 
 
 The frontend is deployed from `frontend/` through GitHub Actions.
 
+- From the repository root, run `npm run deploy` to build the frontend.
 - Enable GitHub Pages in repository settings and choose `GitHub Actions` as the source.
 - Set the repository variable `VITE_API_BASE_URL` to your public Flask API, for example `https://your-backend.example.com/api`.
 - The Vite build uses `http://localhost:5000/api` only when no production URL is provided, so the backend must be available for the dashboard data screens to work on Pages.

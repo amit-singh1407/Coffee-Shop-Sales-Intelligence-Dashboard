@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import Sidebar from './components/Sidebar';
-import Overview from './pages/Overview';
-import Analytics from './pages/Analytics';
-import Forecast from './pages/Forecast';
-import Insights from './pages/Insights';
-import Dataset from './pages/Dataset';
-import Chatbot from './pages/Chatbot';
+
+const Overview = lazy(() => import('./pages/Overview'));
+const Analytics = lazy(() => import('./pages/Analytics'));
+const Forecast = lazy(() => import('./pages/Forecast'));
+const Insights = lazy(() => import('./pages/Insights'));
+const Dataset = lazy(() => import('./pages/Dataset'));
+const Chatbot = lazy(() => import('./pages/Chatbot'));
+
+const PageLoader = () => (
+  <div className="flex flex-col items-center justify-center min-h-[70vh] gap-4">
+    <div className="w-12 h-12 rounded-full border-2 border-emerald-400 border-t-transparent animate-spin" />
+    <p className="text-slate-400 font-medium">Loading dashboard module...</p>
+  </div>
+);
 
 function App() {
   const [activeTab, setActiveTab] = useState('overview');
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'overview':
-        return <Overview />;
-      case 'analytics':
-        return <Analytics />;
-      case 'forecast':
-        return <Forecast />;
-      case 'insights':
-        return <Insights />;
-      case 'dataset':
-        return <Dataset />;
-      case 'chatbot':
-        return <Chatbot />;
-      default:
-        return <Overview />;
-    }
+  const pageMap = {
+    overview: Overview,
+    analytics: Analytics,
+    forecast: Forecast,
+    insights: Insights,
+    dataset: Dataset,
+    chatbot: Chatbot,
   };
+
+  const ActivePage = pageMap[activeTab] || Overview;
 
   return (
     <div className="min-h-screen flex bg-darkBg text-slate-100 relative font-sans">
@@ -41,7 +41,9 @@ function App() {
       {/* Main Responsive Content Workspace */}
       <main className="flex-1 min-h-screen ml-64 p-8 relative z-10 overflow-y-auto">
         <div className="max-w-7xl mx-auto py-4">
-          {renderContent()}
+          <Suspense fallback={<PageLoader />}>
+            <ActivePage />
+          </Suspense>
         </div>
       </main>
     </div>

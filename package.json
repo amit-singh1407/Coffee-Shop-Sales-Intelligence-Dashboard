@@ -1,0 +1,10 @@
+{
+  "name": "coffee-shop-sales-intelligence-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "npm --prefix frontend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "dev:frontend": "npm --prefix frontend run dev"
+  }
+}
