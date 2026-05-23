@@ -18,7 +18,7 @@ const Insights = () => {
         setError(null);
       } catch (err) {
         console.error('Failed to load insights:', err);
-        setError('Failed to retrieve automated retail insights. Verify the Flask API is online.');
+        setError('Failed to retrieve automated retail insights. Verify the backend API is available and VITE_API_BASE_URL is configured.');
       } finally {
         setLoading(false);
       }

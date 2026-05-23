@@ -28,7 +28,7 @@ const Analytics = () => {
         setError(null);
       } catch (err) {
         console.error('Failed to load analytics:', err);
-        setError('Failed to load advanced analytics. Please verify that the Flask backend is operational.');
+        setError('Failed to load advanced analytics. Please verify that the backend API is reachable and VITE_API_BASE_URL is configured.');
       } finally {
         setLoading(false);
       }

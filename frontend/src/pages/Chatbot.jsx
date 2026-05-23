@@ -54,7 +54,7 @@ const Chatbot = () => {
       console.error('Failed to chat:', err);
       setMessages(prev => [...prev, { 
         sender: 'bot', 
-        text: "🚨 *Network connection failed.* I couldn't reach the backend server. Please verify the Flask engine is online.", 
+        text: "🚨 *Network connection failed.* I couldn't reach the backend API. Please verify the deployed Flask service is available.", 
         table: null 
       }]);
     } finally {

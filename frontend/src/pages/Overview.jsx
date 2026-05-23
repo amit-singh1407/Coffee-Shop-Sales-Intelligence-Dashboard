@@ -28,7 +28,7 @@ const Overview = () => {
         setError(null);
       } catch (err) {
         console.error('Failed to load overview data:', err);
-        setError('Unable to reach sales intelligence server. Please ensure the Flask backend is running on port 5000.');
+        setError('Unable to reach the sales intelligence API. Please verify the backend is deployed and VITE_API_BASE_URL is set correctly.');
       } finally {
         setLoading(false);
       }

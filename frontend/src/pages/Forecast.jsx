@@ -23,7 +23,7 @@ const Forecast = () => {
         setError(null);
       } catch (err) {
         console.error('Failed to load forecast:', err);
-        setError('Could not connect to the sales forecasting engine. Verify the Flask API is running.');
+        setError('Could not connect to the sales forecasting API. Verify the backend deployment and VITE_API_BASE_URL configuration.');
       } finally {
         setLoading(false);
       }
