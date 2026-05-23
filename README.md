@@ -22,5 +22,5 @@ The frontend is deployed from `frontend/` through GitHub Actions.
 
 - From the repository root, run `npm run deploy` to build the frontend.
 - The workflow will create the GitHub Pages site automatically if it does not already exist.
-- Set the repository variable `VITE_API_BASE_URL` to your public Flask API, for example `https://your-backend.example.com/api`.
-- The Vite build uses `http://localhost:5000/api` only when no production URL is provided, so the backend must be available for the dashboard data screens to work on Pages.
+- Optionally set the repository variable `VITE_API_BASE_URL` to your public Flask API, for example `https://your-backend.example.com/api`, if you want live backend data instead of demo data.
+- If `VITE_API_BASE_URL` is not configured, the frontend automatically falls back to bundled demo data so the dashboard still renders on GitHub Pages.
