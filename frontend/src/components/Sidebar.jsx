@@ -7,11 +7,10 @@ import {
   MessageSquare, 
   LayoutDashboard, 
   Coffee,
-  AlertTriangle,
-  HelpCircle
+  X
 } from 'lucide-react';
 
-const Sidebar = ({ activeTab, setActiveTab }) => {
+const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
   const menuItems = [
     { id: 'overview', name: 'AI Overview', icon: LayoutDashboard },
     { id: 'analytics', name: 'Advanced Analytics', icon: BarChart3 },
@@ -22,20 +21,32 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    <aside className="w-64 h-screen fixed left-0 top-0 glass-panel border-r border-glassBorder flex flex-col z-20">
+    <aside className={`w-64 h-screen fixed left-0 top-0 glass-panel border-r border-glassBorder flex flex-col z-40 transition-transform duration-300 ease-in-out ${
+      isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+    } bg-darkBg/95 backdrop-blur-xl lg:bg-transparent lg:backdrop-blur-none`}>
       {/* Brand Header */}
-      <div className="p-6 border-b border-glassBorder flex items-center gap-3">
-        <div className="bg-gradient-to-tr from-brandPrimary to-brandSecondary p-2 rounded-xl shadow-lg shadow-brandPrimary/20 animate-pulse">
-          <Coffee className="w-6 h-6 text-white" />
+      <div className="p-6 border-b border-glassBorder flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="bg-gradient-to-tr from-brandPrimary to-brandSecondary p-2 rounded-xl shadow-lg shadow-brandPrimary/20 animate-pulse">
+            <Coffee className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h1 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 tracking-wide text-lg font-sans">
+              BrewIntel
+            </h1>
+            <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-400">
+              Sales BI Engine
+            </span>
+          </div>
         </div>
-        <div>
-          <h1 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 tracking-wide text-lg font-sans">
-            BrewIntel
-          </h1>
-          <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-400">
-            Sales BI Engine
-          </span>
-        </div>
+        
+        {/* Mobile Close Button */}
+        <button 
+          className="lg:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors"
+          onClick={() => setIsOpen(false)}
+        >
+          <X className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Navigation Links */}
@@ -66,7 +77,6 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           );
         })}
       </nav>
-
     </aside>
   );
 };

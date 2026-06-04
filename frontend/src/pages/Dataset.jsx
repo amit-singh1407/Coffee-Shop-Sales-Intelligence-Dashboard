@@ -135,29 +135,7 @@ const Dataset = () => {
 
       {/* Filter and Search Section */}
       <div className="glass-panel p-6 rounded-2xl space-y-6">
-        {/* NLP Search */}
-        <form onSubmit={handleSearchSubmit} className="flex gap-4">
-          <div className="flex-1 relative">
-            <Search className="w-5 h-5 text-slate-500 absolute left-4 top-3.5" />
-            <input
-              type="text"
-              placeholder="Ask NLP: e.g. 'show coffee sales in January' or search product types..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-black/35 border border-glassBorder rounded-xl text-slate-200 placeholder-slate-500 text-sm focus:outline-none focus:border-brandPrimary transition-colors"
-            />
-            <div className="absolute right-3 top-3 flex items-center gap-1 text-[10px] bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded border border-emerald-500/20">
-              <Sparkles className="w-3 h-3" />
-              <span>AI Search</span>
-            </div>
-          </div>
-          <button
-            type="submit"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-brandPrimary to-brandSecondary text-white font-semibold text-sm hover:opacity-90 transition-opacity"
-          >
-            Search
-          </button>
-        </form>
+
 
         {/* Granular filters */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pt-4 border-t border-glassBorder">
